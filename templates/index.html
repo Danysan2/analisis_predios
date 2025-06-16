@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Análisis de Predios</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #222;
+            size: 24px;
+            text-align: center;
+        }
+
+        .seccion {
+            margin-left: 100px;
+            margin-right: 100px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            display: flex;
+            align-items: flex-start;
+            background: #fff;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .grafico {
+            flex: 1;
+        }
+
+        .grafico img {
+            width: 100%;
+            max-width: 600px;
+            border: 1px solid #ccc;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .descripcion {
+            flex: 1;
+            padding-left: 30px;
+        }
+
+        .descripcion p {
+            font-size: 18px;
+            color: #333;
+            text-align: justify;
+        }
+
+        .descripcion h2 {
+            margin-top: 0;
+            color: #444;
+            text-align: center;
+            size: 24px;
+        }
+
+        .conclusion {
+            margin-left: 100px;
+            margin-right: 100px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            padding: 50px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: justify;
+            
+        }
+        .conclusion p{
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Análisis Descriptivo de Predios</h1>
+
+    <div class="seccion">
+        <div class="grafico">
+            <img src="{{ url_for('static', filename='img/grafico_valor_avaluo.png') }}" alt="Valor Avalúo">
+        </div>
+        <div class="descripcion">
+            <h2>1. Distribución del Valor del Avalúo</h2>
+            <p>Este histograma muestra cómo se distribuyen los valores de avalúo de los predios analizados. Se observa
+                una distribución sesgada a la derecha, con una concentración significativa de predios en los rangos
+                inferiores y algunos casos aislados de alto valor. <br> <br>
+
+                Esta distribución indica que la mayoría de los predios poseen un avalúo menor a 500 millones de pesos,
+                mientras que unos pocos alcanzan cifras superiores a los 2.000 millones, lo que puede representar zonas
+                de alta valorización o propiedades comerciales/industriales. <br> <br>
+
+                Este análisis es útil para definir políticas fiscales diferenciadas, valorar activos inmobiliarios y
+                detectar oportunidades de inversión en sectores subvalorados.</p>
+        </div>
+    </div>
+
+    <div class="seccion">
+        <div class="grafico">
+            <img src="{{ url_for('static', filename='img/grafico_area_construida.png') }}" alt="Área Construida">
+        </div>
+        <div class="descripcion">
+            <h2>2. Distribución del Área Construida</h2>
+            <p>La mayoría de los predios presentan un área construida entre 40 y 100 metros cuadrados, reflejando una
+                alta concentración en rangos bajos. Sin embargo, se observa una distribución asimétrica positiva,
+                indicando la existencia de predios con áreas considerablemente mayores que el promedio. <br> <br>
+
+                Este análisis permite identificar tipologías constructivas dominantes y detectar posibles outliers
+                urbanos o propiedades de alta capacidad, útiles para estudios de planificación urbana o decisiones de
+                inversión inmobiliaria.</p>
+        </div>
+    </div>
+
+    <div class="seccion">
+        <div class="grafico">
+            <img src="{{ url_for('static', filename='img/boxplot_avaluo_estrato.png') }}"
+                alt="Boxplot Avalúo por Estrato">
+        </div>
+        <div class="descripcion">
+            <h2>3. Avalúo por Estrato</h2>
+            <p>El gráfico de caja permite observar cómo varía el valor del avalúo según el estrato socioeconómico del
+                predio. <br> <br> 
+
+                Se identifica una tendencia creciente del avalúo a medida que aumenta el estrato, evidenciando una
+                correlación directa entre nivel socioeconómico y valorización inmobiliaria. Además, se aprecia una alta
+                dispersión en los estratos superiores, lo cual podría responder a la heterogeneidad de construcciones o
+                ubicación privilegiada dentro de esos segmentos. <br> <br>
+
+                Esta visualización es clave para segmentaciones de mercado, políticas de subsidio o análisis de carga
+                tributaria diferenciada.</p>
+        </div>
+    </div>
+
+    <div class="seccion">
+        <div class="grafico">
+            <img src="{{ url_for('static', filename='img/scatter_area_avaluo.png') }}" alt="Dispersión Área Avalúo">
+        </div>
+        <div class="descripcion">
+            <h2>4. Relación entre Área Construida y Avalúo</h2>
+            <p>Este gráfico de dispersión revela la relación positiva entre el área construida y el valor del avalúo. A
+                mayor área, tiende a observarse un avalúo más elevado, aunque la dispersión sugiere que existen otros
+                factores influyentes, como la ubicación, el uso del suelo y el estrato socioeconómico. <br> <br> 
+
+                La incorporación del color por estrato permite visualizar patrones dentro de cada grupo social,
+                mostrando cómo el mismo tamaño de construcción puede variar en valor según el contexto urbano. <br> <br>
+
+                Este análisis apoya modelos de predicción de avalúo, análisis multivariado y políticas de planificación
+                territorial basadas en densidad y uso del suelo.</p>
+        </div>
+    </div>
+
+    <div class="seccion">
+        <div class="grafico">
+            <img src="{{ url_for('static', filename='img/scatter_edad_avaluo.png') }}" alt="Matriz Correlación">
+        </div>
+        <div class="descripcion">
+            <h2>5. Relación entre Edad del Predio y Avalúo</h2>
+            <p>La matriz de correlación cuantifica la relación entre variables clave del conjunto de datos. Se observa
+                una fuerte correlación entre el área construida y el valor del avalúo, lo que valida su impacto en la
+                valorización del predio. <br> <br>
+
+                Otras correlaciones como la de edad del predio con puntaje negativo pueden sugerir que construcciones
+                más antiguas tienden a tener un valor o calificación más baja. <br> <br>
+
+                Esta herramienta es esencial para selección de variables predictoras, reducción de dimensionalidad y
+                diagnóstico de colinealidad en modelos estadísticos o de machine learning.</p>
+        </div>
+    </div>
+
+    <div class="conclusion">
+        <h2>Conclusiones</h2>
+        <p>A partir del análisis visual de los predios, se observan varias tendencias clave. Primero, la distribución
+            del valor del avalúo está fuertemente sesgada hacia valores bajos, lo que indica que la mayoría de los
+            predios tienen avalúos inferiores a 400 millones. En segundo lugar, existe una relación positiva entre el
+            área construida y el avalúo, es decir, los predios más grandes tienden a tener mayor valor, aunque hay casos
+            atípicos que podrían explicarse por otros factores como el estrato o la ubicación. <br> <br>
+
+            La variable estrato también tiene un papel relevante: los predios de estratos más altos presentan valores de
+            avalúo significativamente mayores, como se evidencia en el boxplot. Además, se encontró que la edad del
+            predio guarda una relación inversa con el avalúo en muchos casos: los predios más antiguos suelen tener
+            valores más bajos, aunque no es una regla estricta. <br> <br>
+
+            En conjunto, estos gráficos permiten concluir que el valor del avalúo está influenciado por múltiples
+            factores —principalmente el área construida, el estrato y, en menor medida, la edad del predio—. Este
+            análisis puede servir como base para desarrollar modelos de predicción o para entender la distribución del
+            mercado inmobiliario en el contexto evaluado.</p>
+    </div>
+
+</body>
+
+</html>
